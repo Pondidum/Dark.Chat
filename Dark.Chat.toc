@@ -1,0 +1,12 @@
+## Interface: 50001
+## Title: Dark.Chat
+## Author: Darkend / Singularity / Zenedar / EU
+## Version: 0.0.1
+## Notes: Chat
+## RequiredDeps: Dark.Core
+
+config.lua
+
+chatPresenter.lua
+
+run.lua
