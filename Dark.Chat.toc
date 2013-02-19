@@ -8,5 +8,7 @@
 config.lua
 
 chatPresenter.lua
+formatting.lua
+links.lua
 
 run.lua

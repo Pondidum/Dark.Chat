@@ -110,9 +110,6 @@ local chatPresenter = {
 			ui.killFrame(_G[string.format("ChatFrame%sTabSelectedMiddle", id)])
 			ui.killFrame(_G[string.format("ChatFrame%sTabSelectedRight", id)])
 
-			local bar = GeneralDockManager
-			bar:SetHeight(config.tabHeight)
-
 			style.addBackground(tab)
 			style.addShadow(tab)
 

@@ -1,13 +1,26 @@
 local addon, ns = ...
+local config = ns.config
 local ui = Dark.core.ui
 
 local run = function()
+	
+	local tabdock = function()
+
+		-- local bar = GeneralDockManager
+		-- local scroll = GeneralDockManagerScrollFrame
+		-- local scrollChild = scroll:GetScrollChild()
+
+		-- scrollChild:SetHeight(config.tabHeight)
+		-- scroll:SetHeight(config.tabHeight + 5)
+		-- bar:SetHeight(config.tabHeight)
+
+	end
 
 	local perChatFrame = function()
+
 		for i = 1, NUM_CHAT_WINDOWS do
 
 			local frame = _G[string.format("ChatFrame%s", i)]
-
 			ns.chatPresenter.new(frame)
 
 		end
@@ -49,6 +62,7 @@ local run = function()
 
 	end	
 
+	tabdock()
 	perChatFrame()
 	general()
 	settings()

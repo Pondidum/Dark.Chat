@@ -8,6 +8,7 @@ local config = {
 	windowPadding = 15,
 	enableFading = true,
 	fadeTime = 20,
+	linkColor = "16FF5D",
 }
 
 ns.config = config
