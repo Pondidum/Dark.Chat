@@ -1,4 +1,6 @@
-
+local addon, ns = ...
+local core = Dark.core
+local style = core.style
 
 local createChatCopy = function()
 
@@ -12,8 +14,10 @@ local createChatCopy = function()
 	frame:Hide()
 	frame:SetFrameStrata("DIALOG")
 
-	local scrollArea = CreateFrame("ScrollFrame", nil, frame, "UIPanelScrollFrameTemplate")
-	scrollArea:SetPoint("TOPLEFT", frame, "TOPLEFT", 8, -30)
+	style.addBackground(frame)
+
+	local scrollArea = CreateFrame("ScrollFrame", "DarkChatCopyScroll", frame, "UIPanelScrollFrameTemplate")
+	scrollArea:SetPoint("TOPLEFT", frame, "TOPLEFT", 8, -8)
 	scrollArea:SetPoint("BOTTOMRIGHT", frame, "BOTTOMRIGHT", -30, 8)
 	
 	local editBox = CreateFrame("EditBox", nil, frame)
@@ -32,29 +36,31 @@ local createChatCopy = function()
 	local copy = function(f)
 
 		local regions = {f:GetRegions()}
-		local text = ""
+		local text = {}
 
 		for i, v in ipairs(regions) do
 
 			if v:GetObjectType() == "FontString" then
-				text = text .. v:GetText()
+				table.insert(text, v:GetText())
 			end
 
 		end
 
+		table.sort(text, function(a, b) return a < b end)
 
 		frame:Show()
-		editBox:SetText(text)
+		editBox:SetText(table.concat(text, "\n"))
 		editBox:HighlightText(0)
+
 	end
 
 	for i = 1, NUM_CHAT_WINDOWS do
 		
 		local chatFrame = _G["ChatFrame" .. i]
 		
-		local button = CreateFrame("Button", nil, chatFrame)
+		local button = CreateFrame("Button", "DarkChatCopyButton"..i, chatFrame)
 
-		button:SetPoint("BOTTOMRIGHT", chatFrame, "BOTTOMRIGHT", 0, -5)
+		button:SetPoint("BOTTOMRIGHT", chatFrame, "BOTTOMRIGHT", -2, 2)
 		button:SetHeight(10)
 		button:SetWidth(10)
 		button:SetNormalTexture(tex)
@@ -64,6 +70,11 @@ local createChatCopy = function()
 			copy(chatFrame) 
 		end)
 
+		style.addShadow(button)
+		style.addBackground(button)
+
 	end
 
 end
+
+createChatCopy()

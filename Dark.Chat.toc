@@ -10,5 +10,6 @@ config.lua
 chatPresenter.lua
 formatting.lua
 links.lua
+copy.lua
 
 run.lua
