@@ -12,4 +12,6 @@ formatting.lua
 links.lua
 copy.lua
 
+lootLog.lua
+
 run.lua
