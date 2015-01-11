@@ -9,6 +9,12 @@ local config = {
 	enableFading = true,
 	fadeTime = 20,
 	linkColor = "16FF5D",
+
+
+	lootLog = {
+		align = "RIGHT"
+	},
+
 }
 
 ns.config = config

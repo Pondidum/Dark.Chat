@@ -1,12 +1,9 @@
 local addon, ns = ...
+local config = ns.config.lootLog
 
 local class = Darker.class
 local events = Darker.events
 local fonts = Darker.media.fonts
-
-local config = {
-	align = "RIGHT"
-}
 
 local lootLog = class:extend({
 
