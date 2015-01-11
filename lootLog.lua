@@ -22,12 +22,13 @@ local lootLog = class:extend({
 
 		local frame = CreateFrame("ScrollingMessageFrame", "DarkLootLog", UIParent)
 		frame:SetPoint("BOTTOMLEFT", MultiBarBottomRight, "BOTTOMRIGHT", 5, 0)
-		frame:SetPoint("TOP", MultiBarBottomRight, "TOP", 0, 0)
 
 		if DarkBagFrame then
 			frame:SetPoint("RIGHT", DarkBagFrame, "LEFT", -5, 0)
+			frame:SetPoint("TOP", DarkBagsCurrency, "TOP", 0, 0)
 		else
 			frame:SetPoint("RIGHT", UIParent, "RIGHT", -5, 0)
+			frame:SetPoint("TOP", MultiBarBottomRight, "TOP", 0, 0)
 		end
 
 		frame:SetFading(true)
