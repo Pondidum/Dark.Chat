@@ -3,7 +3,8 @@
 ## Author: Darkend / DarkStorm / Zenedar / EU
 ## Version: 0.0.1
 ## Notes: Chat
-## RequiredDeps: Dark.Core
+## RequiredDeps: Dark.Core, Dark
+## OptionalDeps: Dark.Bags
 
 config.lua
 
