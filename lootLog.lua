@@ -4,6 +4,10 @@ local class = Darker.class
 local events = Darker.events
 local fonts = Darker.media.fonts
 
+local config = {
+	align = "RIGHT"
+}
+
 local lootLog = class:extend({
 
 	events = {
@@ -35,7 +39,7 @@ local lootLog = class:extend({
 		frame:SetTimeVisible(20)
 		frame:SetMaxLines(120)
 		frame:SetFont(fonts.normal, 12)
-		frame:SetJustifyH("RIGHT")
+		frame:SetJustifyH(config.align)
 		frame:SetHyperlinksEnabled(true)
 		frame:EnableMouseWheel(true)
 
@@ -56,6 +60,15 @@ local lootLog = class:extend({
 	end,
 
 	addMessage = function(self, message, info)
+
+		local timestamp = date("|cffffffff[%H:%M:%S]|r")
+
+		if config.align == "RIGHT" then
+			message = message .. " " .. timestamp
+		else
+			message = timestamp .. " " .. message
+		end
+
 		self.frame:AddMessage(message, info.r, info.g, info.b, info.id)
 	end,
 
