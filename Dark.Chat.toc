@@ -6,6 +6,7 @@
 ## RequiredDeps: Dark.Core, Dark
 ## OptionalDeps: Dark.Bags
 
+initialise.lua
 config.lua
 
 chatPresenter.lua
