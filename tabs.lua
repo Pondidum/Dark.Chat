@@ -9,8 +9,8 @@ local tabs = class:extend({
 
 		self.tabs = {}
 
-		self:fillTabs()
 		self:buildUI()
+		self:fillTabs()
 
 	end,
 
@@ -37,26 +37,40 @@ local tabs = class:extend({
 	fillTabs = function(self)
 
 		for i = 1, NUM_CHAT_WINDOWS do
+
 			local name, fontSize, r, g, b, alpha, shown, locked, docked, uninteractable = GetChatWindowInfo(i);
 
 			if shown then
 
-				if self.tabs[i] then
-					self.tabs[i]:Show()
-				else
-					self.tabs[i] = self:createTab(i, name)
-				end
-			else
-				if self.tabs[i] then
-					self.tabs[i]:Hide()
-				end
+				local tab = self:getOrCreateTab(i, name)
+
+				self.frame:add(tab)
+
 			end
 
 		end
 
 	end,
 
-	createTab = function(self, id, name)
+	getOrCreateTab = function(self, id, name)
+
+		local tab = self.tabs[id]
+
+		if tab then
+			return tab
+		end
+
+		local conf = {
+			type = "button",
+			name = "$parentTab"..id,
+			text = name,
+		}
+
+		tab = dsl:single(self.frame, conf)
+
+		self.tabs[id] = tab
+
+		return tab
 
 	end,
 
