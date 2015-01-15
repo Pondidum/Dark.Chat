@@ -23,7 +23,7 @@ local tabs = class:extend({
 			origin = "BOTTOMLEFT",
 			itemSpacing = 4,
 			wrap = false,
-			autosize = "x",
+			autosize = "both",
 			points = {
 				{ "LEFT", "UIParent", "LEFT", 20, 0 } --temp
 			},
