@@ -42,9 +42,7 @@ local tabs = class:extend({
 
 			if shown then
 
-				local tab = self:getOrCreateTab(i, name)
-
-				self.frame:add(tab)
+				self:getOrCreateTab(i, name)
 
 			end
 
@@ -69,6 +67,7 @@ local tabs = class:extend({
 		tab = dsl:single(self.frame, conf)
 
 		self.tabs[id] = tab
+		self.frame:add(tab)
 
 		return tab
 
