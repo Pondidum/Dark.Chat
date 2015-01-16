@@ -8,6 +8,7 @@ local tabs = class:extend({
 	ctor = function(self)
 
 		self.buttons = {}
+		self.linked = {}
 
 		self:buildUI()
 		self:fillTabs()
@@ -52,29 +53,38 @@ local tabs = class:extend({
 
 	getOrCreateTab = function(self, id, name)
 
-		local tab = self.buttons[id]
-
-		if tab then
-			return tab
+		if self.buttons[id] then
+			return self.buttons[id]
 		end
 
-		local conf = {
+		local linked = _G["ChatFrame"..id]
+
+		local tab = dsl:single(self.frame, {
 			type = "button",
 			name = "$parentTab"..id,
 			text = name,
 			click = function(component, mouseButton)
-				local chatFrame = _G["ChatFrame"..id]
 
-				chatFrame:Show()
+				self:hideAllLinkedFrames()
+				linked:Show()
+
 			end,
-		}
-
-		tab = dsl:single(self.frame, conf)
+		})
 
 		self.buttons[id] = tab
+		self.linked[id] = linked
+
 		self.frame:add(tab)
 
 		return tab
+
+	end,
+
+	hideAllLinkedFrames = function(self)
+
+		for id, frame in pairs(self.linked) do
+			frame:Hide()
+		end
 
 	end,
 
