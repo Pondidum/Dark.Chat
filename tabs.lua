@@ -62,6 +62,9 @@ local tabs = class:extend({
 		self.frame:add(tab)
 		self.container:add(target)
 
+		target:ClearAllPoints()
+		target:SetAllPoints(self.container.frame)
+
 	end,
 
 	hideAllLinkedFrames = function(self)
