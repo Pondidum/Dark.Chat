@@ -62,6 +62,11 @@ local tabs = class:extend({
 			type = "button",
 			name = "$parentTab"..id,
 			text = name,
+			click = function(component, mouseButton)
+				local chatFrame = _G["ChatFrame"..id]
+
+				chatFrame:Show()
+			end,
 		}
 
 		tab = dsl:single(self.frame, conf)
