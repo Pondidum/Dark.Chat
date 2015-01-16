@@ -7,7 +7,7 @@ local tabs = class:extend({
 
 	ctor = function(self)
 
-		self.tabs = {}
+		self.buttons = {}
 
 		self:buildUI()
 		self:fillTabs()
@@ -52,7 +52,7 @@ local tabs = class:extend({
 
 	getOrCreateTab = function(self, id, name)
 
-		local tab = self.tabs[id]
+		local tab = self.buttons[id]
 
 		if tab then
 			return tab
@@ -71,7 +71,7 @@ local tabs = class:extend({
 
 		tab = dsl:single(self.frame, conf)
 
-		self.tabs[id] = tab
+		self.buttons[id] = tab
 		self.frame:add(tab)
 
 		return tab
