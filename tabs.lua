@@ -5,13 +5,14 @@ local dsl = ns.lib.controls.dsl
 
 local tabs = class:extend({
 
-	ctor = function(self)
+	ctor = function(self, filter)
+
+		self.filter = filter
 
 		self.buttons = {}
 		self.linked = {}
 
 		self:buildUI()
-		self:fillTabs()
 
 	end,
 
@@ -35,48 +36,24 @@ local tabs = class:extend({
 
 	end,
 
-	fillTabs = function(self)
-
-		for i = 1, NUM_CHAT_WINDOWS do
-
-			local name, fontSize, r, g, b, alpha, shown, locked, docked, uninteractable = GetChatWindowInfo(i);
-
-			if shown then
-
-				self:getOrCreateTab(i, name)
-
-			end
-
-		end
-
-	end,
-
-	getOrCreateTab = function(self, id, name)
-
-		if self.buttons[id] then
-			return self.buttons[id]
-		end
-
-		local linked = _G["ChatFrame"..id]
+	addTab = function(self, id, text, target)
 
 		local tab = dsl:single(self.frame, {
 			type = "button",
 			name = "$parentTab"..id,
-			text = name,
+			text = text,
 			click = function(component, mouseButton)
 
 				self:hideAllLinkedFrames()
-				linked:Show()
+				target:Show()
 
 			end,
 		})
 
 		self.buttons[id] = tab
-		self.linked[id] = linked
+		self.linked[id] = target
 
 		self.frame:add(tab)
-
-		return tab
 
 	end,
 
