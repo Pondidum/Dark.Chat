@@ -39,6 +39,8 @@ local lootLog = class:extend({
 		frame:SetJustifyH(config.align)
 		frame:SetHyperlinksEnabled(true)
 		frame:EnableMouseWheel(true)
+		frame:SetShadowColor(0, 0, 0)
+		frame:SetShadowOffset(1.25, -1.25)
 
 		frame:SetScript("OnHyperlinkClick", function(frame, link, text, button)
 			SetItemRef(link, text, button, frame)
