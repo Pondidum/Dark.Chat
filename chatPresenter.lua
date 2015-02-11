@@ -10,7 +10,7 @@ local killFrame = function(frame)
 		frame:UnregisterAllEvents()
 	end
 
-	frame.Show = fake
+	frame.Show = function()end
 	frame:Hide()
 end
 
