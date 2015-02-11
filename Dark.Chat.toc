@@ -12,6 +12,9 @@ config.lua
 chatPresenter.lua
 formatting.lua
 links.lua
+
+copyPanel.lua
+copyButton.lua
 copy.lua
 
 lootLog.lua
