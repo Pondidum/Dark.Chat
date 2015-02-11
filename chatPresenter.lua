@@ -1,11 +1,11 @@
 local addon, ns = ...
-local config = ns.config 
+local config = ns.config
 
 local ui = Dark.core.ui
-local style = Dark.core.style
+local style = ns.lib.style
 
 local chatPresenter = {
-	
+
 	new = function(chatFrame)
 
 		local id = chatFrame:GetID()
@@ -24,28 +24,27 @@ local chatPresenter = {
 			ui.killFrame(_G[format("ChatFrame%sEditBoxFocusLeft", id)])
 			ui.killFrame(_G[format("ChatFrame%sEditBoxFocusMid", id)])
 			ui.killFrame(_G[format("ChatFrame%sEditBoxFocusRight", id)])
-			
+
 			-- Kill off editbox artwork
-			local a, b, c = select(6, edit:GetRegions()) 
+			local a, b, c = select(6, edit:GetRegions())
 			ui.killFrame(a)
 			ui.killFrame(b)
 			ui.killFrame(c)
-			
-			style.addBackground(edit)
-			style.addShadow(edit)		
+
+			style:frame(edit)
 
 			edit:SetAltArrowKeyMode(false)
 			edit:Hide()
-			
-			edit:HookScript("OnEditFocusLost", function(self) 
-				self:Hide() 
-			end)
-		
 
-			tab:HookScript("OnClick", function() 
-				edit:Hide() 
+			edit:HookScript("OnEditFocusLost", function(self)
+				self:Hide()
 			end)
-		end		
+
+
+			tab:HookScript("OnClick", function()
+				edit:Hide()
+			end)
+		end
 
 		local styleChat = function()
 
@@ -58,7 +57,7 @@ local chatPresenter = {
 			if chatFrame.isDocked then
 				chatFrame:SetPoint("BOTTOMLEFT", edit, "TOPLEFT", 0, 5)
 			else
-				chatFrame:SetPoint("BOTTOMLEFT", GeneralDockManager, "TOPLEFT", 0, 5)	
+				chatFrame:SetPoint("BOTTOMLEFT", GeneralDockManager, "TOPLEFT", 0, 5)
 			end
 
 			chatFrame.ClearAllPoints = function() end
@@ -69,14 +68,13 @@ local chatPresenter = {
 			for j = 1, #CHAT_FRAME_TEXTURES do
 				_G[name..CHAT_FRAME_TEXTURES[j]]:SetTexture(nil)
 			end
-	
+
 			if frame ~= COMBATLOG then
 				chatFrame:SetFading(config.enableFading)
 				chatFrame:SetTimeVisible(config.fadeTime)
 			end
 
-			style.addBackground(chatFrame)
-			style.addShadow(chatFrame)
+			style:frame(chatFrame)
 
 		end
 
@@ -90,7 +88,7 @@ local chatPresenter = {
 
 			tab:SetAlpha(1)
 			tab.SetAlpha = UIFrameFadeRemoveFrame
-			
+
 
 
 			ui.killFrame(_G[string.format("ChatFrame%sTabLeft", id)])
@@ -110,8 +108,7 @@ local chatPresenter = {
 			ui.killFrame(_G[string.format("ChatFrame%sTabSelectedMiddle", id)])
 			ui.killFrame(_G[string.format("ChatFrame%sTabSelectedRight", id)])
 
-			style.addBackground(tab)
-			style.addShadow(tab)
+			style:frame(tab)
 
 		end
 

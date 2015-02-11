@@ -5,5 +5,6 @@ local dark = Darker
 ns.lib = {
 	class = dark.class,
 	events = dark.events,
-	controls = dark.controls
+	controls = dark.controls,
+	style = dark.style
 }
