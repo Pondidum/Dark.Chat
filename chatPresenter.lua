@@ -2,17 +2,7 @@ local addon, ns = ...
 local config = ns.config
 local style = ns.lib.style
 
-local killFrame = function(frame)
-
-	if frame == nil then return end
-
-	if frame.UnregisterAllEvents then
-		frame:UnregisterAllEvents()
-	end
-
-	frame.Show = function()end
-	frame:Hide()
-end
+local killFrame = ns.killFrame
 
 local chatPresenter = {
 

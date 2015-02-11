@@ -1,9 +1,8 @@
 local addon, ns = ...
 local config = ns.config
-local ui = Dark.core.ui
 
 local run = function()
-	
+
 	local tabdock = function()
 
 		-- local bar = GeneralDockManager
@@ -27,8 +26,8 @@ local run = function()
 	end
 
 	local general = function()
-		ui.killFrame(FriendsMicroButton)
-		ui.killFrame(ChatFrameMenuButton)
+		ns.killFrame(FriendsMicroButton)
+		ns.killFrame(ChatFrameMenuButton)
 	end
 
 	local settings = function()
@@ -47,7 +46,7 @@ local run = function()
 		ToggleChatColorNamesByClassGroup(true, "RAID_LEADER")
 		ToggleChatColorNamesByClassGroup(true, "RAID_WARNING")
 		ToggleChatColorNamesByClassGroup(true, "BATTLEGROUND")
-		ToggleChatColorNamesByClassGroup(true, "BATTLEGROUND_LEADER")	
+		ToggleChatColorNamesByClassGroup(true, "BATTLEGROUND_LEADER")
 		ToggleChatColorNamesByClassGroup(true, "CHANNEL1")
 		ToggleChatColorNamesByClassGroup(true, "CHANNEL2")
 		ToggleChatColorNamesByClassGroup(true, "CHANNEL3")
@@ -60,13 +59,13 @@ local run = function()
 		ChatTypeInfo.RAID_WARNING.sticky = 1
 		ChatTypeInfo.CHANNEL.sticky = 1
 
-	end	
+	end
 
 	tabdock()
 	perChatFrame()
 	general()
 	settings()
-	
+
 end
 
 run()
