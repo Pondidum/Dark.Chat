@@ -1,8 +1,18 @@
 local addon, ns = ...
 local config = ns.config
-
-local ui = Dark.core.ui
 local style = ns.lib.style
+
+local killFrame = function(frame)
+
+	if frame == nil then return end
+
+	if frame.UnregisterAllEvents then
+		frame:UnregisterAllEvents()
+	end
+
+	frame.Show = fake
+	frame:Hide()
+end
 
 local chatPresenter = {
 
@@ -21,15 +31,15 @@ local chatPresenter = {
 			edit:SetWidth(config.chatWidth)
 			edit:SetHeight(config.editHeight)
 
-			ui.killFrame(_G[format("ChatFrame%sEditBoxFocusLeft", id)])
-			ui.killFrame(_G[format("ChatFrame%sEditBoxFocusMid", id)])
-			ui.killFrame(_G[format("ChatFrame%sEditBoxFocusRight", id)])
+			killFrame(_G[format("ChatFrame%sEditBoxFocusLeft", id)])
+			killFrame(_G[format("ChatFrame%sEditBoxFocusMid", id)])
+			killFrame(_G[format("ChatFrame%sEditBoxFocusRight", id)])
 
 			-- Kill off editbox artwork
 			local a, b, c = select(6, edit:GetRegions())
-			ui.killFrame(a)
-			ui.killFrame(b)
-			ui.killFrame(c)
+			killFrame(a)
+			killFrame(b)
+			killFrame(c)
 
 			style:frame(edit)
 
@@ -91,22 +101,22 @@ local chatPresenter = {
 
 
 
-			ui.killFrame(_G[string.format("ChatFrame%sTabLeft", id)])
-			ui.killFrame(_G[string.format("ChatFrame%sTabMiddle", id)])
-			ui.killFrame(_G[string.format("ChatFrame%sTabRight", id)])
+			killFrame(_G[string.format("ChatFrame%sTabLeft", id)])
+			killFrame(_G[string.format("ChatFrame%sTabMiddle", id)])
+			killFrame(_G[string.format("ChatFrame%sTabRight", id)])
 
-			ui.killFrame(_G[string.format("ChatFrame%sTabSelectedLeft", id)])
-			ui.killFrame(_G[string.format("ChatFrame%sTabSelectedMiddle", id)])
-			ui.killFrame(_G[string.format("ChatFrame%sTabSelectedRight", id)])
+			killFrame(_G[string.format("ChatFrame%sTabSelectedLeft", id)])
+			killFrame(_G[string.format("ChatFrame%sTabSelectedMiddle", id)])
+			killFrame(_G[string.format("ChatFrame%sTabSelectedRight", id)])
 
-			ui.killFrame(_G[string.format("ChatFrame%sTabHighlightLeft", id)])
-			ui.killFrame(_G[string.format("ChatFrame%sTabHighlightMiddle", id)])
-			ui.killFrame(_G[string.format("ChatFrame%sTabHighlightRight", id)])
+			killFrame(_G[string.format("ChatFrame%sTabHighlightLeft", id)])
+			killFrame(_G[string.format("ChatFrame%sTabHighlightMiddle", id)])
+			killFrame(_G[string.format("ChatFrame%sTabHighlightRight", id)])
 
 			-- Killing off the new chat tab selected feature
-			ui.killFrame(_G[string.format("ChatFrame%sTabSelectedLeft", id)])
-			ui.killFrame(_G[string.format("ChatFrame%sTabSelectedMiddle", id)])
-			ui.killFrame(_G[string.format("ChatFrame%sTabSelectedRight", id)])
+			killFrame(_G[string.format("ChatFrame%sTabSelectedLeft", id)])
+			killFrame(_G[string.format("ChatFrame%sTabSelectedMiddle", id)])
+			killFrame(_G[string.format("ChatFrame%sTabSelectedRight", id)])
 
 			style:frame(tab)
 
@@ -114,11 +124,11 @@ local chatPresenter = {
 
 		local killButtons = function()
 
-			ui.killFrame(_G[string.format("ChatFrame%sButtonFrameUpButton", id)])
-			ui.killFrame(_G[string.format("ChatFrame%sButtonFrameDownButton", id)])
-			ui.killFrame(_G[string.format("ChatFrame%sButtonFrameBottomButton", id)])
-			ui.killFrame(_G[string.format("ChatFrame%sButtonFrameMinimizeButton", id)])
-			ui.killFrame(_G[string.format("ChatFrame%sButtonFrame", id)])
+			killFrame(_G[string.format("ChatFrame%sButtonFrameUpButton", id)])
+			killFrame(_G[string.format("ChatFrame%sButtonFrameDownButton", id)])
+			killFrame(_G[string.format("ChatFrame%sButtonFrameBottomButton", id)])
+			killFrame(_G[string.format("ChatFrame%sButtonFrameMinimizeButton", id)])
+			killFrame(_G[string.format("ChatFrame%sButtonFrame", id)])
 
 
 		end
