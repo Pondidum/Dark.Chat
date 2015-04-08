@@ -19,6 +19,4 @@ copy.lua
 
 lootLog.lua
 
-tabs.lua
-
 run.lua
